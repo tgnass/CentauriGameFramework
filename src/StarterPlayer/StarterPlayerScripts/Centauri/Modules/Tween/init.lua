@@ -1,9 +1,7 @@
 local Tween = {}
 Tween.__index = Tween
 
-
 Tween.Easing = require(script:WaitForChild("Easing"))
-
 
 function Tween.new(tweenInfo, callback)
 	
@@ -54,7 +52,6 @@ function Tween.new(tweenInfo, callback)
 	
 end
 
-
 function Tween:ResetState()
 	self._playing = false
 	self._paused = false
@@ -64,7 +61,6 @@ function Tween:ResetState()
 	self._elapsedDelayTime = 0
 end
 
-
 function Tween:SetPlaybackState(state)
 	local lastState = self.PlaybackState
 	self.PlaybackState = state
@@ -72,7 +68,6 @@ function Tween:SetPlaybackState(state)
 		self._playbackStateChanged:Fire(state)
 	end
 end
-
 
 function Tween:Play()
 	
@@ -165,14 +160,12 @@ function Tween:Play()
 	
 end
 
-
 function Tween:Pause()
 	if ((not self._playing) or (self._paused)) then return end
 	self._paused = true
 	self:SetPlaybackState(Enum.PlaybackState.Paused)
 	game:GetService("RunService"):UnbindFromRenderStep(self._id)
 end
-
 
 function Tween:Cancel()
 	if (not self._playing) then return end
@@ -182,14 +175,11 @@ function Tween:Cancel()
 	self._completed:Fire(self.PlaybackState)
 end
 
-
 function Tween.fromService(...)
 	return game:GetService("TweenService"):Create(...)
 end
 
-
 Tween.FromService = Tween.fromService
 Tween.New = Tween.new
-
 
 return Tween
