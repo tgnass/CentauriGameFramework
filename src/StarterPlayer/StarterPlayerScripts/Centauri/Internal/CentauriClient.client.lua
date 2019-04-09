@@ -16,7 +16,7 @@ local modulesFolder = script.Parent.Parent:WaitForChild("Modules")
 local sharedFolder = game:GetService("ReplicatedStorage"):WaitForChild("Centauri"):WaitForChild("Shared")
 local internalFolder = game:GetService("ReplicatedStorage").Centauri:WaitForChild("Internal")
 local enumsFolder = game:GetService("ReplicatedStorage").Centauri:WaitForChild("Enums")
-local guiTemplatesFolder = modulesFolder:WaitForChild("GuiTemplates")
+local guiTemplatesFolder = script.Parent.Parent:WaitForChild("GuiTemplates")
 
 local FastSpawn = require(internalFolder:WaitForChild("FastSpawn"))
 

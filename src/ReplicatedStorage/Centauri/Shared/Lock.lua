@@ -18,7 +18,7 @@ Lock.__index = Lock
 function Lock.new()
     local self = setmetatable({
         Keys = {},
-        Lock.Shared.Event.new()
+        Changed = Lock.Shared.Event.new()
     }, Lock)
 
     return self
