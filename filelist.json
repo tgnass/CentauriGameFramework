@@ -46,6 +46,18 @@
                   },
                   {
                     "type": "file",
+                    "name": "ListenerList.lua"
+                  },
+                  {
+                    "type": "file",
+                    "name": "Lock.lua"
+                  },
+                  {
+                    "type": "file",
+                    "name": "Raycast.lua"
+                  },
+                  {
+                    "type": "file",
                     "name": "Table.lua"
                   },
                   {
@@ -179,6 +191,24 @@
                       {
                         "type": "file",
                         "name": "Mouse.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "ScreenController.lua"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "GuiTemplates",
+                    "children": [
+                      {
+                        "type": "file",
+                        "name": "Button.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "Window.lua"
                       }
                     ]
                   },
@@ -196,6 +226,10 @@
                     "type": "directory",
                     "name": "Modules",
                     "children": [
+                      {
+                        "type": "file",
+                        "name": "Device.lua"
+                      },
                       {
                         "type": "directory",
                         "name": "Tween",
