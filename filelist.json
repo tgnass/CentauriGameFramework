@@ -209,6 +209,26 @@
                         "name": "CentauriClient.client.lua"
                       }
                     ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "Modules",
+                    "children": [
+                      {
+                        "type": "directory",
+                        "name": "Tween",
+                        "children": [
+                          {
+                            "type": "file",
+                            "name": "Easing.lua"
+                          },
+                          {
+                            "type": "file",
+                            "name": "init.lua"
+                          }
+                        ]
+                      }
+                    ]
                   }
                 ]
               }
