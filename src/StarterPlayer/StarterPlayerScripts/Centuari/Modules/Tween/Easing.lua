@@ -1,9 +1,3 @@
--- Easing
--- Crazyman32
--- June 21, 2017
-
--- Source: https://github.com/EmmanuelOga/easing
-
 local sin = math.sin
 local cos = math.cos
 local pi = math.pi
