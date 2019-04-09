@@ -1,3 +1,17 @@
+-- Mouse
+-- StarWars
+-- April 8, 2019
+
+--[[
+	
+	Mouse:GetMouseRay(mousePosition)
+	Mouse:FindPartFromMouseRay(mouseRay)
+    Mouse:AddToTargetFilter(object)
+    Mouse:RemoveFromTargetFilter(object)
+
+--]]
+
+
 local Mouse = {
     DistanceCutOff = 1000,
     Icon = "",

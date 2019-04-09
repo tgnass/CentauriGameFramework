@@ -16,13 +16,43 @@ local enumsFolder = game:GetService("ReplicatedStorage").Centauri.Enums
 local remoteServices = Instance.new("Folder")
 remoteServices.Name = "CentauriRemoteServices"
 
+local gui = game:GetService("StarterGui"):FindFirstChild("Gui")
+gui.Parent = game:GetService("ReplicatedStorage")
+
 local FastSpawn = require(internalFolder.FastSpawn)
+
+function CentauriServer:RegisterLock(lockName)
+    local lock = self.Shared.Lock.new()
+    self._locks[lockName] = lock
+
+    return lock
+end
+
+function CentauriServer:ConnectLock(lockName, func)
+    return self._locks[lockName].Changed:Connect(func)
+end
+
+function CentauriServer:FireLock(lockName, name)
+    self._locks[lockName]:Lock(name)
+end
+
+function CentauriServer:FireUnlock(lockName, name)
+    self._locks[lockName]:Unlock(name)
+end
+
+function CentauriServer:FireUnlockAll(lockName)
+    self._locks[lockName]:UnlockAll()
+end
 
 function CentauriServer:RegisterEvent(eventName)
     local event = self.Shared.Event.new()
     self._events[eventName] = event
     
     return event
+end
+
+function CentauriServer:IsLockLocked(lockName)
+    return self._locks[lockName]:IsLocked()
 end
 
 function CentauriServer:RegisterClientEvent(eventName)
@@ -76,6 +106,7 @@ end
 function CentauriServer:WrapModule(tbl)
     assert(type(tbl) == "table", "Expected table for argument")
     tbl._events = {}
+    tbl.locks = {}
 
     setmetatable(tbl, mt)
     if type(tbl.Init) == "function" and not tbl.__centPreventInit then
@@ -131,6 +162,7 @@ function LoadService(module)
     setmetatable(service, mt)
 
     service._events = {}
+    service._locks = {}
     service._clientEvents = {}
     service._remoteFolder = remoteFolder
 end

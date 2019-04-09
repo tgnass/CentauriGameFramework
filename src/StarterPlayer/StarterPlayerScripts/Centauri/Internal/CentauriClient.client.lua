@@ -4,6 +4,8 @@ local Centauri = {
     Shared = {},
     Services = {},
     Enum = {},
+    GuiTemplates = {},
+    Screens = {},
     Player = game:GetService("Players").LocalPlayer
 }
 
@@ -14,14 +16,49 @@ local modulesFolder = script.Parent.Parent:WaitForChild("Modules")
 local sharedFolder = game:GetService("ReplicatedStorage"):WaitForChild("Centauri"):WaitForChild("Shared")
 local internalFolder = game:GetService("ReplicatedStorage").Centauri:WaitForChild("Internal")
 local enumsFolder = game:GetService("ReplicatedStorage").Centauri:WaitForChild("Enums")
+local guiTemplatesFolder = modulesFolder:WaitForChild("GuiTemplates")
 
 local FastSpawn = require(internalFolder:WaitForChild("FastSpawn"))
+
+function Centauri:RegisterLock(lockName)
+    local lock = self.Shared.Lock.new()
+    self._locks[lockName] = lock
+
+    return lock
+end
+
+function Centauri:ConnectLock(lockName, func)
+    return self._locks[lockName].Changed:Connect(func)
+end
+
+function Centauri:FireLock(lockName, name)
+    self._locks[lockName]:Lock(name)
+end
+
+function Centauri:FireUnlock(lockName, name)
+    self._locks[lockName]:Unlock(name)
+end
+
+function Centauri:FireUnlockAll(lockName)
+    self._locks[lockName]:UnlockAll()
+end
+
+function Centauri:RegisterEvent(eventName)
+    local event = self.Shared.Event.new()
+    self._events[eventName] = event
+    
+    return event
+end
+
+function Centauri:IsLockLocked(lockName)
+    return self._locks[lockName]:IsLocked()
+end
 
 function Centauri:RegisterEvent(eventName)
     local event = self.Shared.Event.new()
     self._events[eventName] = event
 
-    return event 
+    return event
 end
 
 function Centauri:FireEvent(eventName, ...)
@@ -39,6 +76,8 @@ end
 function Centauri:WrapModule(tbl)
     assert(type(tbl) == "table", "Expected table for argument")
     tbl._events = {}
+    tbl._locks = {}
+
     setmetatable(tbl, mt)
 
     if type(tbl.Init) == "function" and not tbl.__centPreventInit then
@@ -102,7 +141,7 @@ function LazyLoadSetup(tbl, folder)
     setmetatable(tbl, {
         __index = function(t, i)
             local obj = require(folder[i])
-            if type(obj) == "table" then
+            if type(obj) == "table" and not obj.__centPreventWrap then
                 Centauri:WrapModule(obj)
             end
 
@@ -116,6 +155,7 @@ function LoadController(module)
     local controller = require(module)
     Centauri.Controllers[module.Name] = controller
     controller._events = {}
+    controller._locks = {}
     setmetatable(controller, mt)
 end
 
@@ -141,6 +181,7 @@ function Init()
 
     LazyLoadSetup(Centauri.Modules, modulesFolder)
     LazyLoadSetup(Centauri.Shared, sharedFolder)
+    LazyLoadSetup(Centauri.GuiTemplates, guiTemplatesFolder)
 
     LoadServices()
 
