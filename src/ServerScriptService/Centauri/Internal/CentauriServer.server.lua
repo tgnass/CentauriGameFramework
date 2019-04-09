@@ -17,7 +17,9 @@ local remoteServices = Instance.new("Folder")
 remoteServices.Name = "CentauriRemoteServices"
 
 local gui = game:GetService("StarterGui"):FindFirstChild("Gui")
-gui.Parent = game:GetService("ReplicatedStorage")
+if gui then
+    gui.Parent = game:GetService("ReplicatedStorage")
+end
 
 local FastSpawn = require(internalFolder.FastSpawn)
 
