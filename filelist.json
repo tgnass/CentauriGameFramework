@@ -155,20 +155,6 @@
                     ]
                   }
                 ]
-              },
-              {
-                "type": "directory",
-                "name": "Services",
-                "children": [
-                  {
-                    "type": "file",
-                    "name": "DataService.lua"
-                  },
-                  {
-                    "type": "file",
-                    "name": "TemplateService.lua"
-                  }
-                ]
               }
             ]
           }
@@ -193,10 +179,6 @@
                       {
                         "type": "file",
                         "name": "Mouse.lua"
-                      },
-                      {
-                        "type": "file",
-                        "name": "TemplateController.lua"
                       }
                     ]
                   },
