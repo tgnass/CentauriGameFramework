@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
 	paths_data = []
 	all_files = check_output(["git", "ls-tree", "--name-only", "-r", "master", "src"])
-	paths = all_files.split("\n")
+	paths = all_files.decode().split("\n")
 	for path in paths:
 		path_array = path.split("/")
 		current = paths_data

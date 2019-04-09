@@ -1,0 +1,179 @@
+{
+  "url": "https://raw.githubusercontent.com/tgnass/CentauriGameFramework/master/",
+  "paths": {
+    "type": "directory",
+    "name": "src",
+    "children": [
+      {
+        "type": "directory",
+        "name": "Client",
+        "children": [
+          {
+            "type": "directory",
+            "name": "Controllers",
+            "children": [
+              {
+                "type": "file",
+                "name": "Mouse.lua"
+              },
+              {
+                "type": "file",
+                "name": "TemplateController.lua"
+              }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "Internal",
+            "children": [
+              {
+                "type": "file",
+                "name": "CentauriClient.client.lua"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "ClientInternal",
+        "children": [
+          {
+            "type": "file",
+            "name": "FastSpawn.lua"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Enums",
+        "children": [
+          {
+            "type": "file",
+            "name": "SeverityType.lua"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Server",
+        "children": [
+          {
+            "type": "directory",
+            "name": "Modules",
+            "children": [
+              {
+                "type": "directory",
+                "name": "DataStore2",
+                "children": [
+                  {
+                    "type": "directory",
+                    "name": "MockDataStoreService",
+                    "children": [
+                      {
+                        "type": "directory",
+                        "name": "MockDataStoreService",
+                        "children": [
+                          {
+                            "type": "file",
+                            "name": "MockDataStoreConstants.lua"
+                          },
+                          {
+                            "type": "file",
+                            "name": "MockDataStoreManager.lua"
+                          },
+                          {
+                            "type": "file",
+                            "name": "MockDataStorePages.lua"
+                          },
+                          {
+                            "type": "file",
+                            "name": "MockDataStoreUtils.lua"
+                          },
+                          {
+                            "type": "file",
+                            "name": "MockGlobalDataStore.lua"
+                          },
+                          {
+                            "type": "file",
+                            "name": "MockOrderedDataStore.lua"
+                          },
+                          {
+                            "type": "file",
+                            "name": "init.lua"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "file",
+                        "name": "init.lua"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "file",
+                    "name": "init.lua"
+                  },
+                  {
+                    "type": "file",
+                    "name": "table.lua"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "Services",
+            "children": [
+              {
+                "type": "file",
+                "name": "DataService.lua"
+              },
+              {
+                "type": "file",
+                "name": "TemplateService.lua"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "ServerInternal",
+        "children": [
+          {
+            "type": "file",
+            "name": "CentauriServer.server.lua"
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "Shared",
+        "children": [
+          {
+            "type": "file",
+            "name": "DebugPrint.lua"
+          },
+          {
+            "type": "file",
+            "name": "Event.lua"
+          },
+          {
+            "type": "file",
+            "name": "Table.lua"
+          },
+          {
+            "type": "file",
+            "name": "Util.lua"
+          },
+          {
+            "type": "file",
+            "name": "WeightedList.lua"
+          }
+        ]
+      }
+    ]
+  }
+}
