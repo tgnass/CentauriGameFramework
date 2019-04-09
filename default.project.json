@@ -27,20 +27,20 @@
         "Centauri": {
         "$className": "Folder",  
         "Shared": {
-          "$path": "src/Shared"
+          "$path": "src/ReplicatedStorage/Centauri/Shared"
         },
         "Internal": {
-          "$path": "src/ClientInternal"
+          "$path": "src/ReplicatedStorage/Centauri/Internal"
         } ,
         "Enums": {
-          "$path": "src/Enums"
+          "$path": "src/ReplicatedStorage/Centauri/Enums"
         }                  
       }
     },
     "ServerStorage": {
       "$className": "ServerStorage",
       "Centauri": {
-        "$path": "src/Server"
+        "$path": "src/ServerStorage/Centauri"
       }
     },  
     "ServerScriptService": {
@@ -48,7 +48,7 @@
       "Centauri": {
         "$className": "Folder",  
         "Internal": {
-          "$path": "src/ServerInternal"
+          "$path": "src/ServerScriptService/Centauri/Internal"
         }
       }
     },   
@@ -57,7 +57,7 @@
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
         "Centauri": {
-          "$path": "src/Client"
+          "$path": "src/StarterPlayer/StarterPlayerScripts/Centauri"
         }
      }
     },   
