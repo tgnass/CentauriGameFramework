@@ -1,0 +1,99 @@
+{
+  "name": "DungeonCrawler",
+  "tree": {
+    "$className": "DataModel",
+    "HttpService": {
+      "$className": "HttpService",
+      "$properties": {
+        "HttpEnabled": true
+      }
+    },
+    "Lighting": {
+      "$className": "Lighting",
+      "$properties": {
+        "Technology": "Voxel",
+        "Ambient": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "Outlines": false,
+        "GlobalShadows": true,
+        "Brightness": 2.0
+      }
+    },
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+        "Centauri": {
+        "$className": "Folder",  
+        "Shared": {
+          "$path": "src/Shared"
+        },
+        "Internal": {
+          "$path": "src/ClientInternal"
+        } ,
+        "Enums": {
+          "$path": "src/Enums"
+        }                  
+      }
+    },
+    "ServerStorage": {
+      "$className": "ServerStorage",
+      "Centauri": {
+        "$path": "src/Server"
+      }
+    },  
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "Centauri": {
+        "$className": "Folder",  
+        "Internal": {
+          "$path": "src/ServerInternal"
+        }
+      }
+    },   
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "Centauri": {
+          "$path": "src/Client"
+        }
+     }
+    },   
+    "SoundService": {
+      "$className": "SoundService",
+      "$properties": {
+        "RespectFilteringEnabled": true
+      }
+    },
+    "Workspace": {
+      "$className": "Workspace",
+      "$properties": {
+        "FilteringEnabled": true
+      },
+      "Baseplate": {
+        "$className": "Part",
+        "$properties": {
+          "Anchored": true,
+          "Locked": true,
+          "Color": [
+            0.38823,
+            0.37254,
+            0.38823
+          ],
+          "Size": [
+            512.0,
+            20.0,
+            512.0
+          ],
+          "Position": [
+            0.0,
+            -10.0,
+            0.0
+          ]
+        }
+      }
+    }
+  }
+}
