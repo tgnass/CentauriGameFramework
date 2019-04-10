@@ -16,22 +16,6 @@ local ScreenController = {}
 local UserInputService = game:GetService("UserInputService")
 
 
--- Setup table to load modules on demand
-function LazyLoadSetup(tbl, folder)
-    setmetatable(tbl, {
-        __index = function(t, i)
-            local obj = require(folder[i])
-            if type(obj) == "table" and not obj.__centPreventWrap then
-                _G.Centauri:WrapModule(obj)
-            end
-
-            rawset(t, i, obj)
-            return obj
-        end
-    })
-end
-
-
 function ScreenController:GetPlatform()
     if UserInputService.KeyboardEnabled and not self.Modules.Device:IsPhone() or self.Modules.Device:IsTablet() then
         return "Large"
@@ -55,7 +39,19 @@ function ScreenController:Start()
 
         for _, v in pairs(gui:GetChildren()) do
             if v == layout then
-                LazyLoadSetup(_G.Centauri.Screens, v)
+				for _, obj in pairs(v:GetChildren()) do
+					if obj:IsA("Folder") then
+						local moduleObj = obj:FindFirstChildOfClass("ModuleScript")
+						if moduleObj then
+							local module = require(moduleObj)
+							if type(module) == "table" and not module.__centPreventWrap then
+								_G.Centauri:WrapModule(module)
+							end
+							
+							_G.Centauri.Screens[moduleObj.Name] = module 
+						end
+					end
+				end
             else
                 v:Destroy()
             end
