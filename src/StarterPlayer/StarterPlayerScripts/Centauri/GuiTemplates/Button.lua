@@ -26,6 +26,7 @@ clickSound.Parent = script
 
 
 local ContextActionService = game:GetService("ContextActionService")
+local UserInputService = game:GetService("UserInputService")
 local HttpService = game:GetService("HttpService")
 local SoundService = game:GetService("SoundService")
 
@@ -41,60 +42,8 @@ local VALID_INPUT_TYPES = {
 
 local ANIMATE_GUI_OBJECT_TWEEN_INFO = TweenInfo.new(0.1, Enum.EasingStyle.Sine)
 
+
 -- // Helper functions
-local function animateGuiObject(guiObject)
-	local animationContainter = guiObject:FindFirstChild("AnimationContainer")
-    if animationContainter then
-        local tween = Button.Modules.Tween.fromService(animationContainter, ANIMATE_GUI_OBJECT_TWEEN_INFO, {Size = UDim2.new(0.95, 0, 0.95, 0)})
-        tween.Completed:Connect(function(playbackState)
-            if playbackState == Enum.PlaybackState.Completed then
-                local nextTween = Button.Modules.Tween.fromService(animationContainter, ANIMATE_GUI_OBJECT_TWEEN_INFO, {Size = UDim2.new(1, 0, 1, 0)})
-                nextTween.Completed:Connect(function(nextPlaybackState)
-                    if nextPlaybackState == Enum.PlaybackState.Completed then
-                        nextTween:Destroy()
-                        tween:Destroy()
-                    end
-                end)
-
-                nextTween:Play()
-            end
-        end)
-
-        tween:Play()
-	end	
-end
-
-
-local function hoverGuiObject(guiObject)
-	local animationContainter = guiObject:FindFirstChild("AnimationContainer")
-    if animationContainter then
-        local tween = Button.Modules.Tween.fromService(animationContainter, ANIMATE_GUI_OBJECT_TWEEN_INFO, {Size = UDim2.new(1.1, 0, 1.1, 0)})
-        tween.Completed:Connect(function(playbackState)
-            if playbackState == Enum.PlaybackState.Completed then
-                tween:Destroy()
-            end 
-        end)
-
-        tween:Play()
-	end
-end
-
-
-local function unhoverGuiObject(guiObject)
-	local animationContainter = guiObject:FindFirstChild("AnimationContainer")
-    if animationContainter then
-        local tween = Button.Modules.Tween.fromService(animationContainter, ANIMATE_GUI_OBJECT_TWEEN_INFO, {Size = UDim2.new(1, 0, 1, 0)})
-        tween.Completed:Connect(function(playbackState)
-            if playbackState == Enum.PlaybackState.Completed then
-                tween:Destroy()
-            end 
-        end)
-
-        tween:Play()        
-	end
-end
-
-
 function AnimateDown(self)
     if self.rbx:FindFirstChild("AnimationContainer") then
         local tween = Button.Modules.Tween.fromService(self.rbx.AnimationContainer, ANIMATE_GUI_OBJECT_TWEEN_INFO, {Size = UDim2.new(0.95, 0, 0.95, 0)})
@@ -111,7 +60,7 @@ end
 
 function AnimateUp(self)
     if self.rbx:FindFirstChild("AnimationContainer") then
-        local tween = Button.Modules.Tween.fromService(self.rbx.AnimationContainer, ANIMATE_GUI_OBJECT_TWEEN_INFO, {Size = UDim2.new(0.95, 0, 0.95, 0)})
+        local tween = Button.Modules.Tween.fromService(self.rbx.AnimationContainer, ANIMATE_GUI_OBJECT_TWEEN_INFO, {Size = UDim2.new(1, 0, 1, 0)})
         tween.Completed:Connect(function(playbackState)
             if playbackState == Enum.PlaybackState.Completed then
                 if self.rbx:IsDescendantOf(game) then
@@ -147,7 +96,7 @@ function AnimateOver(self)
     if self.rbx:FindFirstChild("AnimationContainer") then
         local tweenInfo = TweenInfo.new(0.05, Enum.EasingStyle.Sine)
 
-        local tween = Button.Modules.Tween.fromService(self.rbx.AnimationContainer, tweenInfo, {Size = UDim2.new(1, 0, 1, 0)})
+        local tween = Button.Modules.Tween.fromService(self.rbx.AnimationContainer, tweenInfo, {Size = UDim2.new(1.05, 0, 1.05, 0)})
         tween.Completed:Connect(function(playbackState)
             if playbackState == Enum.PlaybackState.Completed then
                 tween:Destroy()
@@ -312,6 +261,22 @@ function Button:Destroy()
     self._connections = {}
     self._keys = {}
 end
+
+
+UserInputService.InputEnded:Connect(function(input, processed)
+	if VALID_INPUT_TYPES[input.UserInputType] then
+		if downButton then
+			if overButton == downButton then
+				Release(downButton, true)
+			else
+				Release(downButton, false)
+				if overButton then
+					InvokeEnter(overButton)
+				end
+			end
+		end
+	end
+end)
 
 
 return Button

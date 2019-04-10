@@ -39,7 +39,7 @@ function Window.new(guiObject)
 
     local topbar = guiObject:FindFirstChild("Topbar")
     if topbar then
-        local closeFrame = topbar:FIndFirstChild("Close")
+        local closeFrame = topbar:FindFirstChild("Close")
         if closeFrame then
             local button = Window.GuiTemplates.Button.new(closeFrame)
             button.OnButtonClicked:Connect(function()
@@ -107,7 +107,7 @@ end
 function Window:Focus()
 	if not self:IsFocusedWindow() then
 		if self.rbx.Parent then
-			for i, v in next, windows do
+			for i, v in next, self._windows do
 				if v.rbx and v.rbx.Parent then
 					if v.rbx == self.rbx then
 						v.rbx.Parent.ZIndex = FOCUSED_ZINDEX
