@@ -155,4 +155,5 @@ function MockDataStoreService:ExportToJSON(...) -- luacheck: ignore self
 	return MockDataStoreManager.ExportToJSON(...)
 end
 
+MockDataStoreService.__centPreventWrap = true
 return MockDataStoreService

@@ -174,8 +174,7 @@
                 "children": [
                   {
                     "type": "directory",
-                    "name": ".keep",
-                    "children": []
+                    "name": ".keep"
                   }
                 ]
               }

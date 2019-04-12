@@ -40,7 +40,7 @@
 local Players = game:GetService("Players")
 local DataStoreService = game:GetService("DataStoreService")
 if game:GetService("RunService"):IsStudio() then
-	DataStoreService = require(script.MockDataStoreService)
+	DataStoreService = require(script.Parent.MockDataStoreService)
 end
 local table = require(script.table) --If you're using this from GitHub, this is the table in the boilerplate folder.
 local RegularSave = false

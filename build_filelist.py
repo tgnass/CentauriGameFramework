@@ -39,10 +39,10 @@ if __name__ == "__main__":
 					"type": "file" if is_file else "directory",
 					"name": p
 				}
-				if not is_file:
+				if not is_file and not p.endswith(".keep"):
 					item["children"] = []
 				current.append(item)
-			if item["type"] == "directory":
+			if item["type"] == "directory" and not p.endswith(".keep"):
 				current = item["children"]
 	
 	filelist_data = {
