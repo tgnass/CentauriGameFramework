@@ -113,56 +113,46 @@
                     "name": "DataStore2",
                     "children": [
                       {
-                        "type": "directory",
-                        "name": "MockDataStoreService",
-                        "children": [
-                          {
-                            "type": "directory",
-                            "name": "MockDataStoreService",
-                            "children": [
-                              {
-                                "type": "file",
-                                "name": "MockDataStoreConstants.lua"
-                              },
-                              {
-                                "type": "file",
-                                "name": "MockDataStoreManager.lua"
-                              },
-                              {
-                                "type": "file",
-                                "name": "MockDataStorePages.lua"
-                              },
-                              {
-                                "type": "file",
-                                "name": "MockDataStoreUtils.lua"
-                              },
-                              {
-                                "type": "file",
-                                "name": "MockGlobalDataStore.lua"
-                              },
-                              {
-                                "type": "file",
-                                "name": "MockOrderedDataStore.lua"
-                              },
-                              {
-                                "type": "file",
-                                "name": "init.lua"
-                              }
-                            ]
-                          },
-                          {
-                            "type": "file",
-                            "name": "init.lua"
-                          }
-                        ]
-                      },
-                      {
                         "type": "file",
                         "name": "init.lua"
                       },
                       {
                         "type": "file",
                         "name": "table.lua"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "MockDataStoreService",
+                    "children": [
+                      {
+                        "type": "file",
+                        "name": "MockDataStoreConstants.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "MockDataStoreManager.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "MockDataStorePages.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "MockDataStoreUtils.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "MockGlobalDataStore.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "MockOrderedDataStore.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "init.lua"
                       }
                     ]
                   }
