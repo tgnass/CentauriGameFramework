@@ -206,6 +206,10 @@
                       {
                         "type": "file",
                         "name": "ScreenController.lua"
+                      },
+                      {
+                        "type": "file",
+                        "name": "TaskScheduler.lua"
                       }
                     ]
                   },
