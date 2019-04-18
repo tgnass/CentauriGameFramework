@@ -108,7 +108,7 @@ end
 function CentauriServer:WrapModule(tbl)
     assert(type(tbl) == "table", "Expected table for argument")
     tbl._events = {}
-    tbl.locks = {}
+    tbl._locks = {}
 
     setmetatable(tbl, mt)
     if type(tbl.Init) == "function" and not tbl.__centPreventInit then
