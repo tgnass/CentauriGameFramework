@@ -150,7 +150,7 @@ function Mouse:Start()
     end)
 
     UserInputService.InputEnded:Connect(function(inputObject, processed)
-        if not proccessed then
+        if not processed then
             if ValidButton1Inputs[inputObject.UserInputType] or ValidButton1Inputs[inputObject.KeyCode] then
                 self:FireEvent("Button1Up")
             elseif ValidButton2Inputs[inputObject.UserInputType] or ValidButton2Inputs[inputObject.KeyCode] then 
