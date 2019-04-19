@@ -17,6 +17,11 @@ function ListenerList:Connect(event, func)
 	return listener
 end
 
+-- Bind a connection and store it in the list
+function ListenerList:BindConnection(connection)
+	table.insert(self._listeners, connection)
+end
+
 function ListenerList:BindToRenderStep(name, ...)
 	table.insert(self._renderStepNames, name)
 	game:GetService("RunService"):BindToRenderStep(name, ...)
