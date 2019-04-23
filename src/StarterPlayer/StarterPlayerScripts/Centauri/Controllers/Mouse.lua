@@ -5,6 +5,7 @@
 --[[
 	
 	Mouse:GetMouseRay(mousePosition)
+	Mouse:SetIcon(icon)
 	Mouse:FindPartFromMouseRay(mouseRay)
     Mouse:AddToTargetFilter(object)
     Mouse:RemoveFromTargetFilter(object)
@@ -43,6 +44,27 @@ function Mouse:GetMouseRay(mousePosition)
     local mouseRay = workspace.CurrentCamera:ScreenPointToRay(mousePosition.X, mousePosition.Y - TOPBAR_OFFSET, 1)
 
     return Ray.new(mouseRay.Origin, mouseRay.Direction * self.DistanceCutOff)
+end
+
+function Mouse:SetIcon(icon)
+	if type(icon) == "string" and string.match(icon, "rbxassetid://%d+") ~= nil then
+		self.Icon = icon
+		self.Player:GetMouse().Icon = icon
+	elseif type(icon) == "string" then
+		local success = pcall(function()
+			self.Player:GetMouse().Icon = icon
+		end)
+		
+		if success then
+			self.Icon = icon
+		end
+	elseif type(icon) == "number" then
+		self.Icon = "rbxassetid://" .. icon
+		self.Player:GetMouse().Icon = self.Icon
+	elseif type(icon) == nil or (type(icon) == "string" and icon == "") then
+		self.Icon = ""
+		self.Player:GetMouse().Icon = ""
+	end
 end
 
 function Mouse:FindPartFromMouseRay(mouseRay)
