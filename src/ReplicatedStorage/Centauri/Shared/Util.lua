@@ -136,5 +136,48 @@ function module:UnanchorModel(model)
 	end
 end
 
+function module:Color3ToHex(color3)
+	local r = color3.r * 255
+	local g = color3.g * 255
+	local b = color3.b * 255
+
+	local rgb = {r, g, b}
+
+	local hexaDecimal = "#"
+	for _, value in pairs(rgb) do
+		local hex = ""
+
+		while value > 0 do
+			local index = math.fmod(value, 16) + 1
+			value = math.floor(value / 16)
+
+			hex = string.sub("0123456789ABCDEF", index, index) .. hex
+		end
+
+		if string.len(hex) == 0 then
+			hex = "00"
+		elseif string.len(hex) == 1 then
+			hex = "0" .. hex
+		end
+
+		hexaDecimal = hexaDecimal .. hex
+	end
+
+	return hexaDecimal
+end
+
+function module:HexToColor3(hex)
+	hex = hex:gsub("#", "")
+
+	local r = tonumber("0X" .. hex:sub(1, 2))
+	local g = tonumber("0X" .. hex:sub(3, 4))
+	local b = tonumber("0X" .. hex:sub(5, 6))
+
+	local colorValue = Color3.fromRGB(r, g, b)
+
+	return colorValue
+end
+
+
 module.__centPreventWrap = true
 return module
