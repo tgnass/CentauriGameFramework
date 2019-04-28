@@ -5,6 +5,7 @@
 --[[
     
     ScreenController:GetPlatform()
+    ScreenController:IsLoaded()
 
 --]]
 
@@ -16,12 +17,20 @@ local ScreenController = {}
 local UserInputService = game:GetService("UserInputService")
 
 
+local isLoaded = false
+
+
 function ScreenController:GetPlatform()
     if UserInputService.KeyboardEnabled and not self.Modules.Device:IsPhone() or self.Modules.Device:IsTablet() then
         return "Large"
     end
 
     return "Small"
+end
+
+
+function ScreenController:IsLoaded()
+    return isLoaded
 end
 
 
@@ -57,6 +66,8 @@ function ScreenController:Start()
             end
         end
     end
+
+    isLoaded = true
 end
 
 
