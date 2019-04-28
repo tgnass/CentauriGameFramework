@@ -46,13 +46,13 @@ function module:ReadableNumber(number, places, canAddCommas)
 	if not number then
 		return 0
 	elseif number >= 1000000000000 then
-		returnValue = placeValue:format(number / 1000000000000) .. " T"
+		returnValue = placeValue:format(number / 1000000000000):gsub("%.?0+$", "") .. " T"
 	elseif number >= 1000000000  then
-		returnValue = placeValue:format(number / 1000000000) .. " B"
+		returnValue = placeValue:format(number / 1000000000):gsub("%.?0+$", "") .. " B"
 	elseif number >= 1000000 then
-		returnValue = placeValue:format(number / 1000000) .. " M"
+		returnValue = placeValue:format(number / 1000000):gsub("%.?0+$", "") .. " M"
 	elseif number >= 10000 then
-		returnValue = placeValue:format(number / 1000) .. "k"
+		returnValue = placeValue:format(number / 1000):gsub("%.?0+$", "") .. "k"
 	else
 		returnValue = (canAddCommas and module:AddCommas(number)) or number
 	end

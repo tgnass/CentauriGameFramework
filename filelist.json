@@ -161,13 +161,7 @@
               {
                 "type": "directory",
                 "name": "Services",
-                "children": [
-                  {
-                    "type": "directory",
-                    "name": ".keep",
-                    "children": []
-                  }
-                ]
+                "children": []
               }
             ]
           }
