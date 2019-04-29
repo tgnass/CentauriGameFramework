@@ -35,15 +35,17 @@ if __name__ == "__main__":
 			item = find(current, p)
 			if not item:
 				is_file = p.endswith(".lua")
+				is_keep_file = p.endswith(".keep")
 				
-				item = {
-					"type": "file" if is_file else "directory",
-					"name": p
-				}
-				if not is_file:
-					item["children"] = []
-				current.append(item)
-			if item["type"] == "directory":
+				if not is_keep_file:
+					item = {
+						"type": "file" if is_file else "directory",
+						"name": p
+					}
+					if not is_file:
+						item["children"] = []
+					current.append(item)
+			if item and item["type"] == "directory":
 				current = item["children"]
 	
 	filelist_data = {
