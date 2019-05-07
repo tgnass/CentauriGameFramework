@@ -46,19 +46,19 @@ function module:ReadableNumber(number, places, canAddCommas)
 	if not number then
 		return 0
 	elseif number >= 1e+24 then
-		returnValue = placeValue:format(number / 1e+24):gsub("%.?0+$", "") .. " Y"
+		returnValue = placeValue:format(number / 1e+24):gsub("%.?0+$", "") .. "Y"
 	elseif number >= 1e+21 then
-		returnValue = placeValue:format(number / 1e+21):gsub("%.?0+$", "") .. " Z"
+		returnValue = placeValue:format(number / 1e+21):gsub("%.?0+$", "") .. "Z"
 	elseif number >= 1e+18 then
-		returnValue = placeValue:format(number / 1e+18):gsub("%.?0+$", "") .. " E"
+		returnValue = placeValue:format(number / 1e+18):gsub("%.?0+$", "") .. "E"
 	elseif number >= 1e+15 then
-		returnValue = placeValue:format(number / 1e+15):gsub("%.?0+$", "") .. " P"
+		returnValue = placeValue:format(number / 1e+15):gsub("%.?0+$", "") .. "P"
 	elseif number >= 1e+12 then
-		returnValue = placeValue:format(number / 1e+12):gsub("%.?0+$", "") .. " T"
+		returnValue = placeValue:format(number / 1e+12):gsub("%.?0+$", "") .. "T"
 	elseif number >= 1000000000  then
-		returnValue = placeValue:format(number / 1000000000):gsub("%.?0+$", "") .. " B"
+		returnValue = placeValue:format(number / 1000000000):gsub("%.?0+$", "") .. "B"
 	elseif number >= 1000000 then
-		returnValue = placeValue:format(number / 1000000):gsub("%.?0+$", "") .. " M"
+		returnValue = placeValue:format(number / 1000000):gsub("%.?0+$", "") .. "M"
 	elseif number >= 10000 then
 		returnValue = placeValue:format(number / 1000):gsub("%.?0+$", "") .. "k"
 	else
